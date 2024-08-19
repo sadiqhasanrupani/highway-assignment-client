@@ -1,0 +1,219 @@
+ <div className="flex min-h-full flex-1 h-screen">
+      <div className="relative hidden w-0 flex-1 lg:block">
+        <img
+          className="absolute inset-0 h-full w-full object-contain"
+          src={RegisterImg}
+          alt=""
+        />
+      </div>
+      <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-[0.5] lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96">
+          <div>
+            <h2 className="text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              Sign in to your account
+            </h2>
+            <p className="mt-2 text-sm text-gray-500 flex gap-[0.625rem] items-center">
+              Already have an account?
+              <Link to={"/login"}>
+                <Button variant={"link"} className="font-semibold p-0">
+                  Login
+                </Button>
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <div>
+              <form onSubmit={formik.handleSubmit} className="space-y-5">
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    First Name
+                  </label>
+                  <div className="mt-2">
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      autoComplete="off"
+                      value={formik.values.firstName}
+                      required
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                    />
+                    {formik.errors.firstName && formik.touched.firstName && (
+                      <Label className="text-red-500">
+                        {formik.errors.firstName}
+                      </Label>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Last Name
+                  </label>
+                  <div className="mt-2">
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      autoComplete="off"
+                      value={formik.values.lastName}
+                      required
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                    />
+                    {formik.errors.lastName && formik.touched.lastName && (
+                      <Label className="text-red-500">
+                        {formik.errors.lastName}
+                      </Label>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Email address
+                  </label>
+                  <div className="mt-2">
+                    <Input
+                      id="email"
+                      name="email"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
+                      type="email"
+                      autoComplete="off"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                    />
+                    {formik.errors.email && formik.touched.email && (
+                      <Label className="text-red-500">
+                        {formik.errors.email}
+                      </Label>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Password
+                  </label>
+                  <div className="mt-2">
+                    <Input
+                      id="password"
+                      name="password"
+                      type="password"
+                      value={formik.values.password}
+                      autoComplete="off"
+                      required
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                    />
+                    {formik.errors.password && formik.touched.password && (
+                      <Label className="text-red-500">
+                        {formik.errors.password}
+                      </Label>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="confirmpassword"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="mt-2">
+                    <Input
+                      id="confirmpassword"
+                      name="confirmpassword"
+                      type="password"
+                      value={formik.values.confirmpassword}
+                      autoComplete="off"
+                      required
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                    />
+                    {formik.errors.confirmpassword &&
+                      formik.touched.confirmpassword && (
+                        <Label className="text-red-500">
+                          {formik.errors.confirmpassword}
+                        </Label>
+                      )}
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <label
+                    htmlFor="role"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Select a Role
+                  </label>
+
+                  <Select
+                    onOpenChange={() => formik.setFieldTouched("role", true)}
+                    onValueChange={(value) => {
+                      formik.setFieldValue("role", value);
+                    }}
+                    required
+                  >
+                    <SelectTrigger
+                      className="w-full"
+                      value={formik.values.contactMode}
+                    >
+                      <SelectValue
+                        placeholder="Select a Contact Mode"
+                        defaultValue={formik.values.contactMode}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Contact Mode</SelectLabel>
+                        <SelectItem value="email">email</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  {formik.errors.contactMode && formik.touched.contactMode && (
+                    <Label className="text-red-500">
+                      {formik.errors.contactMode}
+                    </Label>
+                  )}
+                </div>
+
+                <div>
+                  <Button
+                    disabled={
+                      !formik.isValid || registerIsPending || !formik.dirty
+                    }
+                    type="submit"
+                    className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    <div className="flex gap-2 items-center">
+                      <p>Register</p>{" "}
+                      <span>{registerIsPending && <Spinner />}</span>
+                    </div>
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
