@@ -1,10 +1,10 @@
 import { LoginBody, RegisterBody, VerifyOtpBody } from "@/types";
-import { HttpError, postRequest } from "@/utils";
+import { getRequest, HttpError, postRequest } from "@/utils";
 
 export async function registerHandler(registerContext: RegisterBody) {
   // return postRequest("/auth/register", { ...registerContext }, false);
   const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/auth/register`,
+    `${import.meta.env.VITE_BASE_URL}/auth/register`,
     {
       method: "POST",
       headers: {
@@ -29,12 +29,12 @@ export async function verifyOtpHandler(verifyOtpContext: VerifyOtpBody) {
   return postRequest("/auth/verify-otp", verifyOtpContext);
 }
 
-export async function resentOtpHandler(verifyOtpContext: VerifyOtpBody) {
-  return postRequest("/auth/resend-otp", verifyOtpContext);
+export async function resendOtpHandler() {
+  return getRequest("/auth/resend-otp");
 }
 
 export async function loginHandler(loginContext: LoginBody) {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+  const response = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

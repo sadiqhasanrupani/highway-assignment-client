@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 
 import { MutationKey, useMutation } from "@tanstack/react-query";
 
-import { verifyOtpHandler } from "@/http/post";
+import { resendOtpHandler, verifyOtpHandler } from "@/http/post";
 import { useEffect } from "react";
 import Spinner from "@/components/loaders/spinner";
 import { HttpError } from "@/utils";
@@ -46,6 +46,20 @@ export default function Otp() {
     },
   });
 
+  const {
+    isPending: resendOtpIsPending,
+    isError: resendOtpIsError,
+    error: resendOtpError,
+    mutate: resendOtpMutate,
+  } = useMutation<any, HttpError, any>({
+    mutationKey: ["resend-otp"] as MutationKey,
+    mutationFn: resendOtpHandler,
+    onSuccess: (data) => {
+      toast.success(data.message as string);
+      setAuthToken(data.token as string);
+    },
+  });
+
   const schema = yup.object().shape({
     otpCode: yup
       .string()
@@ -79,6 +93,20 @@ export default function Otp() {
 
     // eslint-disable-next-line
   }, [verifyOtpIsError, verifyOtpError]);
+
+  useEffect(() => {
+    if (resendOtpIsError) {
+      toast.error(resendOtpError.message || "Something went wrong.");
+
+      if (resendOtpError.code === 422) {
+        for (const error of resendOtpError.info.errorStack) {
+          formik.setFieldError(error.path, error.msg);
+        }
+      }
+    }
+
+    // eslint-disable-next-line
+  }, [resendOtpIsError, resendOtpError]);
 
   return (
     <main className="font-poppins w-full" style={{ fontFamily: "Poppins" }}>
@@ -138,8 +166,16 @@ export default function Otp() {
                     </div>
 
                     <div className="flex justify-end items-end">
-                      <Button variant={"link"} className="p-0">
-                        Resend OTP
+                      <Button
+                        type="button"
+                        variant={"link"}
+                        className="p-0 text-xs flex items-center gap-1"
+                        onClick={() => resendOtpMutate("something")}
+                      >
+                        <p>Resend OTP</p>{" "}
+                        <span>
+                          {resendOtpIsPending && <Spinner className="w-4" />}
+                        </span>
                       </Button>
                     </div>
 

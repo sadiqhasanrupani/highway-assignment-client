@@ -1,0 +1,98 @@
+export const customers = [
+  {
+    name: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    phoneNumber: "+1 234 567 8901",
+    address: "789 Oak St, Springfield, USA",
+  },
+  {
+    name: "Bob Martinez",
+    email: "bob.martinez@example.com",
+    phoneNumber: "+1 345 678 9012",
+    address: "101 Pine St, Centerville, USA",
+  },
+  {
+    name: "Charlie Davis",
+    email: "charlie.davis@example.com",
+    phoneNumber: "+1 456 789 0123",
+    address: "202 Maple St, Lakeview, USA",
+  },
+  {
+    name: "Diana Moore",
+    email: "diana.moore@example.com",
+    phoneNumber: "+1 567 890 1234",
+    address: "303 Cedar St, Brookside, USA",
+  },
+  {
+    name: "Ethan Wilson",
+    email: "ethan.wilson@example.com",
+    phoneNumber: "+1 678 901 2345",
+    address: "404 Birch St, Riverside, USA",
+  },
+  {
+    name: "Fiona Taylor",
+    email: "fiona.taylor@example.com",
+    phoneNumber: "+1 789 012 3456",
+    address: "505 Walnut St, Greenfield, USA",
+  },
+  {
+    name: "George Anderson",
+    email: "george.anderson@example.com",
+    phoneNumber: "+1 890 123 4567",
+    address: "606 Cherry St, Oakwood, USA",
+  },
+  {
+    name: "Hannah Thomas",
+    email: "hannah.thomas@example.com",
+    phoneNumber: "+1 901 234 5678",
+    address: "707 Ash St, Fairview, USA",
+  },
+  {
+    name: "Isaac Jackson",
+    email: "isaac.jackson@example.com",
+    phoneNumber: "+1 012 345 6789",
+    address: "808 Willow St, Meadowbrook, USA",
+  },
+  {
+    name: "Julia White",
+    email: "julia.white@example.com",
+    phoneNumber: "+1 123 456 7891",
+    address: "909 Elm St, Sunnyvale, USA",
+  },
+  {
+    name: "Kevin Harris",
+    email: "kevin.harris@example.com",
+    phoneNumber: "+1 234 567 8902",
+    address: "1010 Pinecone St, Hillside, USA",
+  },
+  {
+    name: "Laura Martin",
+    email: "laura.martin@example.com",
+    phoneNumber: "+1 345 678 9013",
+    address: "1111 Spruce St, Valleyview, USA",
+  },
+  {
+    name: "Michael Clark",
+    email: "michael.clark@example.com",
+    phoneNumber: "+1 456 789 0124",
+    address: "1212 Poplar St, Ridgewood, USA",
+  },
+  {
+    name: "Natalie Lewis",
+    email: "natalie.lewis@example.com",
+    phoneNumber: "+1 567 890 1235",
+    address: "1313 Fir St, Cedarville, USA",
+  },
+  {
+    name: "Oliver Young",
+    email: "oliver.young@example.com",
+    phoneNumber: "+1 678 901 2346",
+    address: "1414 Sycamore St, Timberland, USA",
+  },
+  {
+    name: "Patricia King",
+    email: "patricia.king@example.com",
+    phoneNumber: "+1 789 012 3457",
+    address: "1515 Magnolia St, Riverbend, USA",
+  },
+];

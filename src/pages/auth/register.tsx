@@ -26,6 +26,8 @@ import { setAuthToken } from "@/utils/auth";
 
 import RegisterSvg from "@/components/svg/register";
 import { Card } from "@/components/ui/card";
+import PasswordInput from "@/components/input/password-input";
+import { TextEffect } from "@/core/text-effect";
 
 type InitialValues = {
   firstName: string;
@@ -50,7 +52,7 @@ export default function Register() {
     onSuccess: (data) => {
       toast.success(data.message as string);
       setAuthToken(data.token as string);
-      navigate("/");
+      navigate("/otp");
     },
   });
 
@@ -124,9 +126,18 @@ export default function Register() {
           <Card className="shadow-none md:shadow-xl p-[2.93rem] lg:border lg:border-[#E5E3E8]">
             <div className="w-full max-w-sm lg:w-96">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-                <h2 className="text-4xl text-primary font-bold leading-9 tracking-tight text-gray-900">
-                  <span>Let us know</span>{" "}
-                  <span className="text-danger">!</span>
+                <h2 className="text-4xl text-primary font-bold leading-9 tracking-tight text-gray-900 flex gap-1 items-center">
+                  <TextEffect as="span" per="char" preset="blur">
+                    Let us know
+                  </TextEffect>{" "}
+                  <TextEffect
+                    as="span"
+                    per="char"
+                    preset="scale"
+                    className="text-danger"
+                  >
+                    !
+                  </TextEffect>
                 </h2>
                 <Link to={"/login"}>
                   <Button
@@ -185,65 +196,40 @@ export default function Register() {
 
                     <div>
                       <div className="mt-2">
-                        <Input
-                          id="email"
-                          name="email"
-                          placeholder="Enter Email"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.email}
-                          type="email"
-                          autoComplete="off"
-                          required
-                        />
-                        {formik.errors.email && formik.touched.email && (
-                          <Label className="text-red-500">
-                            {formik.errors.email}
-                          </Label>
-                        )}
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="mt-2">
-                        <Input
+                        <PasswordInput
                           id="password"
-                          name="password"
-                          type="password"
+                          errorMessage={formik.errors.password}
+                          isError={
+                            formik.errors.password && formik.touched.password
+                              ? true
+                              : false
+                          }
+                          formik={formik}
+                          onBlur={formik.handleBlur}
+                          onChange={formik.handleChange}
                           placeholder="Set Password"
                           value={formik.values.password}
-                          autoComplete="off"
-                          required
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
                         />
-                        {formik.errors.password && formik.touched.password && (
-                          <Label className="text-red-500">
-                            {formik.errors.password}
-                          </Label>
-                        )}
                       </div>
                     </div>
 
                     <div>
                       <div className="mt-2">
-                        <Input
+                        <PasswordInput
                           id="confirmpassword"
-                          name="confirmpassword"
-                          placeholder="Retype Password"
-                          type="password"
-                          value={formik.values.confirmpassword}
-                          autoComplete="off"
-                          required
-                          onChange={formik.handleChange}
+                          errorMessage={formik.errors.confirmpassword}
+                          isError={
+                            formik.errors.confirmpassword &&
+                            formik.touched.confirmpassword
+                              ? true
+                              : false
+                          }
+                          formik={formik}
                           onBlur={formik.handleBlur}
+                          onChange={formik.handleChange}
+                          placeholder="Set Password"
+                          value={formik.values.confirmpassword}
                         />
-                        {formik.errors.confirmpassword &&
-                          formik.touched.confirmpassword && (
-                            <Label className="text-red-500">
-                              {formik.errors.confirmpassword}
-                            </Label>
-                          )}
                       </div>
                     </div>
 
@@ -283,12 +269,33 @@ export default function Register() {
                     </div>
 
                     <div>
+                      <div className="mt-2">
+                        <Input
+                          id="email"
+                          name="email"
+                          placeholder="Enter Email"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.email}
+                          type="email"
+                          autoComplete="off"
+                          required
+                        />
+                        {formik.errors.email && formik.touched.email && (
+                          <Label className="text-red-500">
+                            {formik.errors.email}
+                          </Label>
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
                       <Button
                         disabled={
                           !formik.isValid || registerIsPending || !formik.dirty
                         }
+                        className="w-full"
                         type="submit"
-                        className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         <div className="flex gap-2 items-center">
                           <p>Register</p>{" "}

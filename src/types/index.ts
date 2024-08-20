@@ -4,6 +4,13 @@ export type ContactEnum = "email" | "phone";
 
 export type SvgProps = {} & HTMLAttributes<SVGAElement>;
 
+export type Customer = {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+};
+
 // body types
 export type RegisterBody = {
   firstName: string;
@@ -18,6 +25,17 @@ export type LoginBody = {
   password: string;
 };
 
-export type VerifyOtpBody = {
-  otpCode: string;
+export type UpdatePassBody = {
+  currentPassword: string;
+  updatedPassword: string;
+};
+
+// payload types
+export type UserDetailPayload = {
+  message: string;
+  userDetail: {
+    fullname: string;
+    email: string;
+    id: number;
+  };
 };

@@ -7,6 +7,8 @@ import RootLayout from "@/layout/root-layout";
 import Login from "@/pages/auth/login";
 import Register from "@/pages/auth/register";
 import VerifyOtp from "@/pages/auth/otp";
+import Home from "@/pages/home";
+import UpdatePassword from "@/pages/password/update-password";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -16,7 +18,10 @@ export default function Router() {
     {
       path: "/",
       element: <RootLayout />,
-      children: [{ index: true, element: "Home" }],
+      children: [
+        { index: true, element: <Home /> },
+        { path: "update-password", element: <UpdatePassword /> },
+      ],
     },
   ]);
 

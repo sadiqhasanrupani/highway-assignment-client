@@ -14,7 +14,7 @@ export function cn(...inputs: ClassValue[]) {
 
 // Utility function to get headers
 const getHeaders = (showToken: boolean = true) => {
-  const authTokenCookie = `Bearer ${getAuthToken}`;
+  const authTokenCookie = `Bearer ${getAuthToken()}`;
 
   type Headers = {
     Authorization?: string; // Change `authToken` to `Authorization`
@@ -39,13 +39,13 @@ const getHeaders = (showToken: boolean = true) => {
 export const postRequest = async (
   url: string,
   data?: Record<string, any>,
-  showToken: boolean = true,
+  showToken: boolean = true
 ) => {
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}${url}`,
+      `${import.meta.env.VITE_BASE_URL}${url}`,
       data,
-      { headers: getHeaders(showToken) },
+      { headers: getHeaders(showToken) }
     );
     return response.data;
   } catch (error) {
@@ -56,13 +56,30 @@ export const postRequest = async (
 export const putRequest = async (
   url: string,
   data?: Record<string, any>,
-  showToken: boolean = true,
+  showToken: boolean = true
 ) => {
   try {
     const response = await axios.put(
-      `${import.meta.env.VITE_API_URL}${url}`,
+      `${import.meta.env.VITE_BASE_URL}${url}`,
       data,
-      { headers: getHeaders(showToken) },
+      { headers: getHeaders(showToken) }
+    );
+    return response.data;
+  } catch (error) {
+    handleAxiosError(error);
+  }
+};
+
+export const patchRequest = async (
+  url: string,
+  data?: Record<string, any>,
+  showToken: boolean = true
+) => {
+  try {
+    const response = await axios.patch(
+      `${import.meta.env.VITE_BASE_URL}${url}`,
+      data,
+      { headers: getHeaders(showToken) }
     );
     return response.data;
   } catch (error) {
@@ -73,7 +90,7 @@ export const putRequest = async (
 // Reusable GET function
 export const getRequest = async (url: string) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}${url}`, {
+    const response = await axios.get(`${import.meta.env.VITE_BASE_URL}${url}`, {
       headers: getHeaders(),
     });
     return response.data;
@@ -86,10 +103,10 @@ export const getRequest = async (url: string) => {
 export const deleteRequest = async (url: string) => {
   try {
     const response = await axios.delete(
-      `${import.meta.env.VITE_API_URL}${url}`,
+      `${import.meta.env.VITE_BASE_URL}${url}`,
       {
         headers: getHeaders(),
-      },
+      }
     );
     return response.data;
   } catch (error) {
