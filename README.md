@@ -11,8 +11,6 @@ This is the frontend of the Highway Assignment project, built using [Vite](https
 - [Usage](#usage)
 - [Deployment](#deployment)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
