@@ -118,6 +118,6 @@ Then, deploy the contents of the `dist` folder to your hosting service.
 - **Vite**: A fast frontend build tool and development server.
 - **React Router**: For managing navigation in the app.
 - **Axios**: For making HTTP requests to the backend.
-- **Tailwind CSS**: For scoped CSS styles.
+- **Tailwind CSS**: For utility-first CSS styling, providing low-level, reusable styles without writing custom CSS.
 - **Tanstack Query**: For managing server state and data fetching.
 - **Tanstack Table**: For creating flexible and customizable tables.
