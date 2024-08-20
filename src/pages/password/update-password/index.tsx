@@ -193,7 +193,7 @@ export default function UpdatePassword() {
                   className="flex gap-2 items-center"
                 >
                   {updatePassIsPending ? <Spinner /> : ""}
-                  <span>Create</span>
+                  <span>Reset</span>
                 </Button>
               </div>
             </Card>
