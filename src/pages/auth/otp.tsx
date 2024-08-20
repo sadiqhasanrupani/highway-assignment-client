@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { VerifyOtpBody } from "@/types";
 import { Label } from "@/components/ui/label";
 
 import { MutationKey, useMutation } from "@tanstack/react-query";
@@ -23,6 +22,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { VerifyOtpBody } from "@/types";
 
 type InitialValues = {
   otpCode: string;

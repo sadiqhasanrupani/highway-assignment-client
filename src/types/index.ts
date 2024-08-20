@@ -30,6 +30,10 @@ export type UpdatePassBody = {
   updatedPassword: string;
 };
 
+export type VerifyOtpBody = {
+  otpCode: string;
+};
+
 // payload types
 export type UserDetailPayload = {
   message: string;

@@ -22,4 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< Updated upstream
 .vercel
+=======
+.vercel
+>>>>>>> Stashed changes
