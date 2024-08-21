@@ -144,7 +144,7 @@ export default function Login() {
                           formik={formik}
                           onBlur={formik.handleBlur}
                           onChange={formik.handleChange}
-                          placeholder="Set Password"
+                          placeholder="Enter a password"
                           value={formik.values.password}
                         />
                       </div>
